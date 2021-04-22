@@ -1,22 +1,11 @@
-
-<!DOCTYPE html>
-<html dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iform ورود و ثبت نام با</title>
-    <link rel="stylesheet" type="text/css" href="css/rtl.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/iofrm-style-1.css">
-    <link rel="stylesheet" type="text/css" href="css/iofrm-theme13.css">
-</head>
-<body>
+{% extends 'base_template/base.html' %}
+{% load static %}
+{% block content %}
     <div class="form-body without-side">
         <div class="website-logo">
-            <a href="index.html">
+            <a href="/">
                 <div class="logo">
-                    <img class="logo-size" src="images/logo-light.svg" alt="">
+                    <img class="logo-size" src="{%  static 'images/logo-light.svg' %}" alt="">
                 </div>
             </a>
         </div>
@@ -24,7 +13,7 @@
             <div class="img-holder">
                 <div class="bg"></div>
                 <div class="info-holder">
-                    <img src="images/graphic3.svg" alt="">
+                    <img src="{% static 'images/graphic3.svg' %}" alt="">
                 </div>
             </div>
             <div class="form-holder">
@@ -32,29 +21,147 @@
                     <div class="form-items">
                       <h3>ورود به حساب</h3>
                         <p>با ورود به حساب خود به مدیریت حساب خود برسید</p>
-                        <form>
-                            <input class="form-control" type="text" name="name" placeholder="نام کامل" required>
-                            <input class="form-control" type="email" name="email" placeholder="آدرس ایمیل" required>
-                            <input class="form-control" type="password" name="password" placeholder="رمز عبور" required>
+
+
+                        <form method="post">
+                        {% csrf_token %}
+
+                        {# error for complete form #}
+                        {% if register_form.errors %}
+                            <div class="alert-danger">
+                            <p style="color: darkred" class="text-danger">لطفا خطا را رفع کنید </p>
+                            </div>
+                        {% endif %}
+
+
+
+                         <label for="{{register_form.firstname.id_for_lable}}">{{ register_form.firstname.label }}</label>
+                               {{ register_form.firstname }}
+
+
+                         <label for="{{register_form.lastname.id_for_lable}}">{{ register_form.lastname.label }}</label>
+                                {{ register_form.lastname }}
+
+
+                         <label for="{{register_form.username.id_for_lable}}">{{ register_form.username.label }}
+                               {% for error in register_form.username.errors %}
+                                    <div style="color: darkred">{{ error }}</div>
+                                {% endfor %}
+                        </label>
+                                {{ register_form.username }}
+
+
+                        <label for="{{register_form.email.id_for_lable}}">{{ register_form.email.label }}
+                                {% for error in register_form.email.errors %}
+                                    <div style="color: darkred">{{ error }}</div>
+                                {% endfor %}
+                        </label>
+                                 {{ register_form.email }}
+
+
+                        <label for="{{register_form.datebirth.id_for_lable}}">{{ register_form.datebirth.label }}</label>
+                                 {{ register_form.datebirth }}
+
+
+                        <label for="{{register_form.city.id_for_lable}}">{{ register_form.city.label }}</label>
+                                 {{ register_form.city }}
+
+
+                        <label for="{{register_form.idcard.id_for_lable}}">{{ register_form.idcard.label }}
+                                 {% for error in register_form.idcard.errors %}
+                                     <div style="color: darkred">{{ error }}</div>
+                                 {% endfor %}
+                        </label>
+                                 {{ register_form.idcard }}
+
+
+                        <label for="{{register_form.fathername.id_for_lable}}">{{ register_form.fathername.label }}</label>
+                                 {{ register_form.fathername }}
+
+
+                        <label for="{{register_form.gender.id_for_lable}}">{{ register_form.gender.label }}</label>
+                                 {{ register_form.gender }}
+
+
+                        <label for="{{register_form.address.id_for_lable}}">{{ register_form.address.label }}</label>
+                                 {{ register_form.address }}
+
+
+                        <label for="{{register_form.postcode.id_for_lable}}">{{ register_form.postcode.label }}
+                                 {% for error in register_form.postcode.errors %}
+                                     <div style="color: darkred">{{ error }}</div>
+                                 {% endfor %}
+                        </label>
+                                 {{ register_form.postcode }}
+
+
+                        <label for="{{register_form.phone_mobile.id_for_lable}}">{{ register_form.phone_mobile.label }}
+                                {% for error in register_form.phone_mobile.errors %}
+                                    <div style="color: darkred">{{ error }}</div>
+                                {% endfor %}
+                        </label>
+                                 {{ register_form.phone_mobile }}
+
+
+                        <label for="{{register_form.phone_home.id_for_lable}}">{{ register_form.phone_home.label }}</label>
+                                 {{ register_form.phone_home }}
+
+
+                        <label for="{{register_form.religen.id_for_lable}}">{{ register_form.religen.label }}</label>
+                                 {{ register_form.religen }}
+
+
+                        <label for="{{register_form.maritalstatus.id_for_lable}}">{{ register_form.maritalstatus.label }}</label>
+                                 {{ register_form.maritalstatus }}
+
+
+                        <label for="{{register_form.job.id_for_lable}}">{{ register_form.job.label }}</label>
+                                 {{ register_form.job }}
+
+
+                        <label for="{{register_form.education.id_for_lable}}">{{ register_form.education.label }}</label>
+                                 {{ register_form.education }}
+
+
+                        <label for="{{register_form.Universitydegree.id_for_lable}}">{{ register_form.Universitydegree.label }}</label>
+                                 {{ register_form.Universitydegree }}
+
+
+                        <label for="{{register_form.university.id_for_lable}}">{{ register_form.university.label }}</label>
+                                 {{ register_form.university }}
+
+
+                        <label for="{{register_form.password.id_for_lable}}">{{ register_form.password.label }}
+                                {% for error in register_form.password_again.errors %}
+                                    <div style="color: darkred">{{ error }}</div>
+                                {% endfor %}
+                        </label>
+                               {{ register_form.password }}
+
+
+                        <label for="{{register_form.password_again.id_for_lable}}">{{ register_form.password_again.label }}</label>
+                                {{ register_form.password_again }}
+
+
                             <div class="form-button">
                                 <button id="submit" type="submit" class="ibtn">ثبت نام</button>
                             </div>
+
                         </form>
+
                         <div class="other-links">
                             <div class="text">یا ثبت نام با</div>
                             <a href="register13.html#"><i class="fab fa-facebook-f"></i> فیسبوک </a><a href="register13.html#"><i class="fab fa-google"></i>گوگل</a><a href="register13.html#"><i class="fab fa-linkedin-in"></i>لینکدین</a>
                         </div>
+
                         <div class="page-links">
                             <a href="login13.html">ورود به حساب</a>
                         </div>
-                    </div>
+
+                    </بخقئ>
                 </div>
             </div>
         </div>
     </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-</body>
-</html>
+
+{% endblock %}

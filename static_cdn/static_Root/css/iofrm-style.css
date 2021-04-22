@@ -17,7 +17,7 @@
 -------------------------------------------------------------------*/
 /* -----------------------------------
     1 - General Styles
-------------------------------------*/
+------------------------------------*/z
 *, body {
     font-family: 'iranyekan', sans-serif;
     font-weight: 400;
@@ -430,6 +430,7 @@ html, body {
 
 .form-content input[type="checkbox"], .form-content input[type="radio"] {
     width: auto;
+    position: static !important;
 }
 
 .form-content input[type="checkbox"]:not(:checked), .form-content input[type="checkbox"]:checked, .form-content input[type="radio"]:not(:checked), .form-content input[type="radio"]:checked {
@@ -547,11 +548,13 @@ html, body {
 
 .form-content .custom-options input[type="checkbox"], .form-content .custom-options input[type="radio"] {
     width: auto;
+    position: static !important;
+
 }
 
 .form-content .custom-options input[type="checkbox"]:not(:checked), .form-content .custom-options input[type="checkbox"]:checked, .form-content .custom-options input[type="radio"]:not(:checked), .form-content .custom-options input[type="radio"]:checked {
-    position: absolute;
-    left: -9999px;
+    position: static;
+    
 }
 
 .form-content .custom-options input[type="checkbox"]:not(:checked) + label, .form-content .custom-options input[type="checkbox"]:checked + label, .form-content .custom-options input[type="radio"]:not(:checked) + label, .form-content .custom-options input[type="radio"]:checked + label {
